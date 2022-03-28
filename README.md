@@ -1,6 +1,8 @@
 # Admin-UI
 O objetivo desse projeto e oferecer uma interface para criacao de notícias.
 
+# Tecnologia
+Python 3.6 ou superior. Link para donwload e instalação: https://www.python.org/downloads/
 
 # Montando um Ambiente
 Esses procedimentos devem ser feitos na raiz do projeto, e são exemplos em ambiente `Unix/Mac`.
