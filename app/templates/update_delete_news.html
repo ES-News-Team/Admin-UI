@@ -1,0 +1,50 @@
+{% block update_delete_news %}
+<h1> Atualizar e Deletar</h1>
+{% for news in list_of_news %}
+
+    <form method="post">
+        <label for="id">ID</label>
+        <input type="text" name="id" placeholder="ID" value="{{news['id']}}"></input>
+        <br>
+
+        <label for="assunto">Assunto</label>
+        <br>
+        <select name="assunto">
+            <option 
+                value="pets"
+                {% if  news['assunto'] == "pets" %}
+                    selected
+                {% endif %}
+            >Pets</option>
+            <option 
+                value="artes"
+                {% if  news['assunto'] == "artes" %}
+                    selected
+                {% endif %}   
+            >Artes</option>
+            <option 
+                value="ciencia"
+                {% if  news['assunto'] == "ciencia" %}
+                    selected
+                {% endif %}
+            >Ciência</option>
+        </select>
+        <br>
+
+        <label for="title">Título</label>
+        <br>
+        <input type="text" name="title" placeholder="Title" value="{{news['title']}}"></input>
+        <br>
+
+        <label for="conteudo">Conteúdo</label>
+        <br>
+        <textarea name="conteudo" placeholder="Conteúdo">{{news['conteudo']}}</textarea>
+        <br>
+
+        <button type="submit" name="submit" value="update">Atualizar</button>
+        <button type="submit" name="submit" value="delete">Deletar</button>
+    </form>
+    </br>
+
+{% endfor %}
+{% endblock %}
