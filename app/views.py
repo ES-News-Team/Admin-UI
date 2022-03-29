@@ -1,6 +1,7 @@
 from app.utils.logger import logger
 from flask import redirect, render_template, request
 from app import admin_ui_service
+import requests as req
 
 
 # ======================= index =======================
@@ -27,5 +28,16 @@ def login():
 def postar_noticia():
     if request.method == 'POST':
         logger.info({**request.form})
-    
+
+        # response = req.post('', data={
+        #     "username": request.form['username'], 
+        #     "password": request.form['password']
+        # })
+
+        # if response.status_code == '200':
+        #     # YEAH!!!
+        #     pass 
+
     return render_template('post_news.html')
+
+
