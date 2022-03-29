@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <style>
+        .content{
+            padding: 10px;
+            margin: 5px;
+            background-color: #f7f7f7
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        {% block login %} {% endblock %}
+        {% block create_news %} {% endblock %}
+        {% block update_delete_news %} {% endblock %}
+    </div>
+</body>
+</html>
