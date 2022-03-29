@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block create_news %}
-<h1>{{title}}</h1>
+<h1> Criar </h1>
 <form method="post">
-    <label for="title">Assunto</label>
+    <label for="assunto">Assunto</label>
     <br>
-    <select name="assunto" id="cars">
+    <select name="assunto">
         <option value="pets">Pets</option>
         <option value="artes">Artes</option>
         <option value="ciencia">Ciência</option>
@@ -14,14 +14,16 @@
 
     <label for="title">Título</label>
     <br>
-    <input type="text" name="title" placeholder="Title" value="{{ request.form['title'] }}"></input>
+    <input type="text" name="title" placeholder="Title"></input>
     <br>
 
     <label for="conteudo">Conteúdo</label>
     <br>
-    <textarea name="conteudo" placeholder="Conteúdo" value="{{ request.form['conteudo'] }}"></textarea>
+    <textarea name="conteudo" placeholder="Conteúdo"></textarea>
     <br>
 
     <button type="submit">Submit</button>
 </form>
+
+<a href="/updel-noticias">Atualizar ou deletar noticias?</a>
 {% endblock %}
