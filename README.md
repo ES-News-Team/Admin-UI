@@ -6,6 +6,11 @@ Python 3.6 ou superior. Link para donwload e instalação: https://www.python.or
 
 Link para instalar pip: https://pip.pypa.io/en/stable/installation/
 
+# Integrantes
+Daniel de Souza Lima Junior  
+Natalia Bíscaro  
+Guilherme Garcia  
+
 # Montando um Ambiente
 Esses procedimentos devem ser feitos na raiz do projeto, e são exemplos em ambiente `Unix/Mac`.
 1. Como criar [virtual environments](https://docs.python.org/3/library/venv.html)  
