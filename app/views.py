@@ -17,18 +17,6 @@ def login():
         username = request.form['username']
         password = request.form['password']
         logger.info({**request.form})
-        
-        return redirect('/postar-noticia')
-
-    return render_template('login.html')
-
-
-# ======================= postar-noticia =======================
-@admin_ui_service.route('/postar-noticia', methods=('GET', 'POST'))
-def postar_noticia():
-    if request.method == 'POST':
-        logger.info({**request.form})
-
         # response = req.post('', data={
         #     "username": request.form['username'], 
         #     "password": request.form['password']
@@ -37,7 +25,16 @@ def postar_noticia():
         # if response.status_code == '200':
         #     # YEAH!!!
         #     pass 
+        return redirect('/crud-noticias')
+
+    return render_template('login.html')
+
+
+# ======================= crud-noticias =======================
+@admin_ui_service.route('/crud-noticias', methods=('GET', 'POST'))
+def postar_noticia():
+    if request.method == 'POST':
+        logger.info({**request.form})
 
     return render_template('post_news.html')
-
 
