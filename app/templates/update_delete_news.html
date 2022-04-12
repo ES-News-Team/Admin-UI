@@ -2,9 +2,12 @@
 <h1> Atualizar e Deletar</h1>
 {% for news in list_of_news %}
 
+    <header>
+        <a href="/criar-noticias">[Voltar]</a>
+    </header>
+
     <form method="post">
-        <label for="id">ID</label>
-        <input type="text" name="id" placeholder="ID" value="{{news['id']}}"></input>
+        <input type="hidden" name="id" placeholder="ID" value="{{news['id']}}"></input>
         <br>
 
         <label for="assunto">Assunto</label>
