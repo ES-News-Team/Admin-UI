@@ -1,6 +1,11 @@
 # Admin-UI
 O objetivo desse projeto e oferecer uma interface para criacao de notícias.
 
+# Integrantes
+Daniel de Souza Lima Junior  
+Natalia Bíscaro  
+Guilherme Garcia  
+
 # Tecnologia
 Python 3.6 ou superior. Link para donwload e instalação: https://www.python.org/downloads/
 
