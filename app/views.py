@@ -17,15 +17,20 @@ def login():
         username = request.form['username']
         password = request.form['password']
         logger.info({**request.form})
-        # response = req.post('', data={
-        #     "username": request.form['username'], 
-        #     "password": request.form['password']
-        # })
+        response = req.post('http://127.0.0.1:5002/authenticate', json={
+            "email": username, 
+            "password": password
+        })
 
-        # if response.status_code == '200':
-        #     # YEAH!!!
-        #     pass 
-        return redirect('/criar-noticias')
+        print(response)
+        print(response.status_code)
+
+        if response.status_code == 200: 
+            return redirect('/criar-noticias')
+        else:
+            return redirect('/login')
+            
+        
 
     return render_template('login.html')
 
