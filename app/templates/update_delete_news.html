@@ -1,47 +1,37 @@
 {% block update_delete_news %}
 <h1> Atualizar e Deletar</h1>
-{% for news in list_of_news %}
+{% for i_news in news %}
 
     <header>
         <a href="/criar-noticias">[Voltar]</a>
     </header>
 
     <form method="post">
-        <input type="hidden" name="id" placeholder="ID" value="{{news['id']}}"></input>
-        <br>
-
-        <label for="assunto">Assunto</label>
-        <br>
-        <select name="assunto">
-            <option 
-                value="pets"
-                {% if  news['assunto'] == "pets" %}
-                    selected
-                {% endif %}
-            >Pets</option>
-            <option 
-                value="artes"
-                {% if  news['assunto'] == "artes" %}
-                    selected
-                {% endif %}   
-            >Artes</option>
-            <option 
-                value="ciencia"
-                {% if  news['assunto'] == "ciencia" %}
-                    selected
-                {% endif %}
-            >Ciência</option>
-        </select>
+        <input type="hidden" name="id" placeholder="ID" value="{{i_news['id']}}"></input>
         <br>
 
         <label for="title">Título</label>
         <br>
-        <input type="text" name="title" placeholder="Title" value="{{news['title']}}"></input>
+        <input type="text" name="title" placeholder="Title" value="{{i_news['title']}}"></input>
+        <br>
+
+        <label for="assunto">Assunto</label>
+        <br>
+            <select id="type" name="type" value = "{{ i_news['type'] }}">
+            <option value="Pets">Pets</option>
+            <option value="Art">Art</option>
+            <option value="Sci">Sci</option>
+        </select>
+        <br>
+
+        <label for="image">Endereço da Imagem</label>
+        <br>
+        <input type="text" name="image" placeholder="Endereço da Imagem" value="{{ i_news['image'] }}""></input>
         <br>
 
         <label for="conteudo">Conteúdo</label>
         <br>
-        <textarea name="conteudo" placeholder="Conteúdo">{{news['conteudo']}}</textarea>
+        <textarea name="content" placeholder="content">{{i_news['content']}}</textarea>
         <br>
 
         <button type="submit" name="submit" value="update">Atualizar</button>

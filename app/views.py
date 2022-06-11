@@ -1,3 +1,4 @@
+from re import sub
 from app.utils.logger import logger
 from flask import redirect, render_template, request
 from app import admin_ui_service
@@ -39,35 +40,59 @@ def login():
 @admin_ui_service.route('/criar-noticias', methods=('GET', 'POST'))
 def postar_noticia():
     if request.method == 'POST':
+        title = request.form['title']
+        type = request.form['type']
+        image = request.form['image']
+        content = request.form['content']
         logger.info({**request.form})
+        print(title, type, image, content)
+        response = req.post('http://127.0.0.1:5002/news/', json={
+            "title": title,
+            "type": type,
+            "image": image,
+            "content": content
+        })
+        print(response.status_code)
 
+        if response.status_code == 201: 
+            return redirect('/criar-noticias')
+        else:
+            return redirect('/login')
+    
     return render_template('create_news.html')
 
 
 # ======================= updel-noticias =======================
 @admin_ui_service.route('/updel-noticias', methods=('GET', 'POST'))
 def atualiza_deletar_noticias():
+
+    response = req.get('http://127.0.0.1:5002/news/', timeout=3)
+    data = response.json()
+    print(data)
+
     if request.method == 'POST':
         logger.info({**request.form})
-
-    return render_template('update_delete_news.html', list_of_news = [
-        {
-            "id": "ec5c011a-6478-4def-99e1-ed58bee20b47",
-            "assunto": 'artes',
-            "title": "art TITLE",
-            "conteudo": "TEXTOTEXTOTEXTOTEXTO..."
-        },
-        {
-            "id": "ceb82e0a-d086-4111-b558-8ce5db910b51",
-            "assunto": 'pets',
-            "title": "pet TITLE",
-            "conteudo": "TEXTOTEXTOTEXTOTEXTO..."
-        },
-        {
-            "id": "54b5ff2b-1f41-4880-8b17-5e78c613f3ba",
-            "assunto": 'ciencia',
-            "title": "ciencia TITLE",
-            "conteudo": "TEXTOTEXTOTEXTOTEXTO..."
-        }
-    ])
+        id = request.form['id']
+        title = request.form['title']
+        type = request.form['type']
+        image = request.form['image']
+        content = request.form['content']
+        submit = request.form['submit']
+        logger.info({**request.form})
+        print(title, type, image, content)
+        if submit == 'delete':
+            response = req.delete(f'http://127.0.0.1:5002/news/{id}')
+            print(response.status_code)
+            return redirect('/updel-noticias')
+        else:
+            response = req.put(f'http://127.0.0.1:5002/news/{id}', json={
+            "title": title,
+            "type": type,
+            "image": image,
+            "content": content
+            })
+            print(response)
+            return redirect('/updel-noticias')
+        
+    return render_template('update_delete_news.html', **data)
 

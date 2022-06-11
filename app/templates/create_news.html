@@ -9,21 +9,26 @@
 
     <label for="assunto">Assunto</label>
     <br>
-    <select name="assunto">
-        <option value="pets">Pets</option>
-        <option value="artes">Artes</option>
-        <option value="ciencia">Ciência</option>
+    <select id="type" name="type" value = "{{ request.form['type'] }}">
+        <option value="Pets">Pets</option>
+        <option value="Art">Art</option>
+        <option value="Sci">Sci</option>
     </select>
     <br>
 
     <label for="title">Título</label>
     <br>
-    <input type="text" name="title" placeholder="Title"></input>
+    <input type="text" name="title" placeholder="Title" value="{{ request.form['title'] }}"></input>
     <br>
 
-    <label for="conteudo">Conteúdo</label>
+    <label for="image">Endereço da Imagem</label>
     <br>
-    <textarea name="conteudo" placeholder="Conteúdo"></textarea>
+    <input type="text" name="image" placeholder="Endereço da Imagem" value="{{ request.form['image'] }}""></input>
+    <br>
+
+    <label for="content">Conteúdo</label>
+    <br>
+    <textarea name="content" placeholder="Conteúdo" value="{{ request.form['content'] }}"></textarea>
     <br>
 
     <button type="submit">Submit</button>
